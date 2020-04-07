@@ -7,6 +7,7 @@ namespace BreadSoft.Models
 {
     public class Persona
     {
-        public int Id { set; get; }
+        public int Id { get; set; }
         public string Nombre { get; set;}
+        public string ApellidoMa { get; set; }
 }
