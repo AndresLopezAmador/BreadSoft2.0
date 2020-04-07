@@ -11,5 +11,6 @@ namespace BreadSoft.Models
         public string Nombre { get; set; }
         public string ApellidoMa { get; set; }
         public string ApellidoPa { get; set; }
+        public string Correo { get; set; }
     }
 }
