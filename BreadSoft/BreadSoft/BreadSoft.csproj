@@ -136,7 +136,9 @@
     <Compile Include="Models\BreadSoftContext.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Empleado.cs" />
+    <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Persona.cs" />
+    <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\Proveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
