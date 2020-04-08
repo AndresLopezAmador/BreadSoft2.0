@@ -15,10 +15,17 @@ namespace BreadSoft.Models
 
         }
 
-        public DbSet<Persona> Maestros { get; set; }
+        public DbSet<Empleado> Empleados { get; set; }
 
-        public DbSet<Cliente> Alumnos { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
 
-        //public DbSet<Secretaria> Secretaria { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
+
+        public DbSet<Producto> Productos { get; set; }
+
+        public DbSet<Proveedores> Proveedores { get; set; }
+
+        public DBSet<Venta> Ventas { get; set; }
+
     }
 }
