@@ -144,6 +144,7 @@
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\Proveedor.cs" />
+    <Compile Include="Models\Prueba alv.cs" />
     <Compile Include="Models\Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
