@@ -23,9 +23,9 @@ namespace BreadSoft.Models
 
         public DbSet<Producto> Productos { get; set; }
 
-        public DbSet<Proveedores> Proveedores { get; set; }
+        public DbSet<Proveedor> Proveedores { get; set; }
 
-        public DBSet<Venta> Ventas { get; set; }
+        public DbSet<Venta> Ventas { get; set; }
 
     }
 }
