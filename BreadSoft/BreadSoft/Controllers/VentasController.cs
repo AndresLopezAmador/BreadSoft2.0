@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BreadSoft.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,13 +9,15 @@ namespace BreadSoft.Controllers
 {
     public class VentasController : Controller
     {
+        private BreadSoftContext db = new BreadSoftContext();
+
         // GET: Ventas
         public ActionResult Index()
         {
-            return View();
+            return View(db.Empleados.ToList());
         }
 
-        public ActionResult Agregar()
+        public ActionResult Agregar(Empleado e)
         {
             return View();
         }
