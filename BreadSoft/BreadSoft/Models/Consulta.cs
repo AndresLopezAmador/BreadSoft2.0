@@ -8,7 +8,6 @@ namespace BreadSoft.Models
     public class Consulta
     {
         BreadSoftv2Entities contexto = new BreadSoftv2Entities();
-        //BreadSoftEntities contexto = new BreadSoftEntities()
 
         public empleado mostrarInfo(int id) {
             try

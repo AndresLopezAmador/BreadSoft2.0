@@ -223,6 +223,7 @@
     <Compile Include="Models\venta.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ventas.cs" />
     <Compile Include="Models\v_empleadoPersona.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
