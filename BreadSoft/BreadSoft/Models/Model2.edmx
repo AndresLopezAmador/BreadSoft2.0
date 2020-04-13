@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BreadSoftv2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BreadSoftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="cliente">
           <Key>
             <PropertyRef Name="idCliente" />
@@ -121,6 +121,30 @@
           <Property Name="total" Type="decimal" Precision="5" Scale="2" />
           <Property Name="idEmpleado" Type="int" Nullable="false" />
           <Property Name="idCliente" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BreadSoft.dbo.v_empleadoPersona' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_empleadoPersona">
+          <Key>
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="apellidoPaterno" />
+            <PropertyRef Name="apellidoMaterno" />
+            <PropertyRef Name="domicilio" />
+            <PropertyRef Name="telefono" />
+            <PropertyRef Name="correoElectronico" />
+            <PropertyRef Name="usuario" />
+            <PropertyRef Name="contrasena" />
+            <PropertyRef Name="rol" />
+          </Key>
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidoPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="domicilio" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="correoElectronico" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="contrasena" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="rol" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="fk_cliente_persona">
           <End Role="persona" Type="Self.persona" Multiplicity="1">
@@ -457,7 +481,7 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="BreadSoftv2ModelStoreContainer">
+        <EntityContainer Name="BreadSoftModelStoreContainer">
           <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="compra" EntityType="Self.compra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="detalleCompra" EntityType="Self.detalleCompra" Schema="dbo" store:Type="Tables" />
@@ -470,6 +494,19 @@
           <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="venta" EntityType="Self.venta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_empleadoPersona" EntityType="Self.v_empleadoPersona" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_empleadoPersona].[nombre] AS [nombre], 
+    [v_empleadoPersona].[apellidoPaterno] AS [apellidoPaterno], 
+    [v_empleadoPersona].[apellidoMaterno] AS [apellidoMaterno], 
+    [v_empleadoPersona].[domicilio] AS [domicilio], 
+    [v_empleadoPersona].[telefono] AS [telefono], 
+    [v_empleadoPersona].[correoElectronico] AS [correoElectronico], 
+    [v_empleadoPersona].[usuario] AS [usuario], 
+    [v_empleadoPersona].[contrasena] AS [contrasena], 
+    [v_empleadoPersona].[rol] AS [rol]
+    FROM [dbo].[v_empleadoPersona] AS [v_empleadoPersona]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="fk_cliente_persona" Association="Self.fk_cliente_persona">
             <End Role="persona" EntitySet="persona" />
             <End Role="cliente" EntitySet="cliente" />
@@ -523,10 +560,11 @@
             <End Role="venta" EntitySet="venta" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="BreadSoftv2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="BreadSoftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="cliente">
           <Key>
             <PropertyRef Name="idCliente" />
@@ -858,7 +896,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BreadSoftv2Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BreadSoftEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="cliente" EntityType="Self.cliente" />
           <EntitySet Name="compra" EntityType="Self.compra" />
           <EntitySet Name="detalleCompra" EntityType="Self.detalleCompra" />
@@ -924,114 +962,16 @@
             <End Role="producto" EntitySet="producto" />
             <End Role="productoMateriaPrima" EntitySet="productoMateriaPrima" />
           </AssociationSet>
-          <FunctionImport Name="insertarCliente">
-            <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="apellidoPaterno" Mode="In" Type="String" />
-            <Parameter Name="apellidoMaterno" Mode="In" Type="String" />
-            <Parameter Name="domicilio" Mode="In" Type="String" />
-            <Parameter Name="telefono" Mode="In" Type="String" />
-            <Parameter Name="correoElectronico" Mode="In" Type="String" />
-            <Parameter Name="usuario" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="insertarDetalle">
-            <Parameter Name="idProducto" Mode="In" Type="Int32" />
-            <Parameter Name="idVenta" Mode="In" Type="Int32" />
-            <Parameter Name="cantidad" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="insertarEmpleado" EntitySet="empleado" ReturnType="Collection(BreadSoftv2Model.empleado)">
-            <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="apellidoPaterno" Mode="In" Type="String" />
-            <Parameter Name="apellidoMaterno" Mode="In" Type="String" />
-            <Parameter Name="domicilio" Mode="In" Type="String" />
-            <Parameter Name="telefono" Mode="In" Type="String" />
-            <Parameter Name="correoElectronico" Mode="In" Type="String" />
-            <Parameter Name="contrasena" Mode="In" Type="String" />
-            <Parameter Name="rol" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="insertarProducto">
-            <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="descripcion" Mode="In" Type="String" />
-            <Parameter Name="cantidad" Mode="In" Type="Int32" />
-            <Parameter Name="precio" Mode="In" Type="Decimal" />
-            <Parameter Name="foto" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="insertarProveedor">
-            <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="apellidoPaterno" Mode="In" Type="String" />
-            <Parameter Name="apellidoMaterno" Mode="In" Type="String" />
-            <Parameter Name="domicilio" Mode="In" Type="String" />
-            <Parameter Name="telefono" Mode="In" Type="String" />
-            <Parameter Name="correoElectronico" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="String" />
-            <Parameter Name="idProducto" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="inventarioMateria">
-            <Parameter Name="cantidad" Mode="In" Type="Int32" />
-            <Parameter Name="idMateria" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="inventarioProducto">
-            <Parameter Name="cantidad" Mode="In" Type="Int32" />
-            <Parameter Name="idProducto" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="modificarMateria">
-            <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="descripcion" Mode="In" Type="String" />
-            <Parameter Name="cantidad" Mode="In" Type="Int32" />
-            <Parameter Name="precio" Mode="In" Type="Decimal" />
-            <Parameter Name="idMateriaP" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="modificarProducto">
-            <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="descripcion" Mode="In" Type="String" />
-            <Parameter Name="cantidad" Mode="In" Type="Int32" />
-            <Parameter Name="precio" Mode="In" Type="Decimal" />
-            <Parameter Name="foto" Mode="In" Type="Binary" />
-            <Parameter Name="idProducto" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="mostrarUsuario" ReturnType="Collection(BreadSoftv2Model.mostrarUsuario_Result)">
-            <Parameter Name="usuario" Mode="In" Type="String" />
-            <Parameter Name="contrasena" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BreadSoftv2Model.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BreadSoftv2Model.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="detailsEmpleado" ReturnType="Collection(BreadSoftv2Model.detailsEmpleado_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="buscarArticuloVenta" ReturnType="Collection(BreadSoftv2Model.buscarArticuloVenta_Result)">
+          <FunctionImport Name="buscarArticuloVenta" ReturnType="Collection(BreadSoftModel.buscarArticuloVenta_Result)">
             <Parameter Name="buscar" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="consultarCliente" ReturnType="Collection(BreadSoftv2Model.consultarCliente_Result)" />
-          <FunctionImport Name="consultarEmpleado" ReturnType="Collection(BreadSoftv2Model.consultarEmpleado_Result)" />
-          <FunctionImport Name="consultarProducto" ReturnType="Collection(BreadSoftv2Model.consultarProducto_Result)" />
-          <FunctionImport Name="consultarProveedor" ReturnType="Collection(BreadSoftv2Model.consultarProveedor_Result)" />
+          <FunctionImport Name="consultarCliente" ReturnType="Collection(BreadSoftModel.consultarCliente_Result)" />
+          <FunctionImport Name="consultarEmpleado" ReturnType="Collection(BreadSoftModel.consultarEmpleado_Result)" />
+          <FunctionImport Name="consultarProducto" ReturnType="Collection(BreadSoftModel.consultarProducto_Result)" />
+          <FunctionImport Name="consultarProveedor" ReturnType="Collection(BreadSoftModel.consultarProveedor_Result)" />
+          <FunctionImport Name="detailsEmpleado" ReturnType="Collection(BreadSoftModel.detailsEmpleado_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="disminuirInventario">
             <Parameter Name="idProducto" Mode="In" Type="Int32" />
             <Parameter Name="cantidad" Mode="In" Type="Decimal" />
@@ -1088,39 +1028,109 @@
           <FunctionImport Name="eliminarVenta">
             <Parameter Name="idVenta" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="inicarSesion" ReturnType="Collection(BreadSoftv2Model.inicarSesion_Result)">
+          <FunctionImport Name="inicarSesion" ReturnType="Collection(BreadSoftModel.inicarSesion_Result)">
             <Parameter Name="usuario" Mode="In" Type="String" />
             <Parameter Name="contrasena" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="insertarCliente">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="apellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="domicilio" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="correoElectronico" Mode="In" Type="String" />
+            <Parameter Name="usuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insertarDetalle">
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="idVenta" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="insertarEmpleado">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="apellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="domicilio" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="correoElectronico" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+            <Parameter Name="rol" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insertarProducto">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="precio" Mode="In" Type="Decimal" />
+            <Parameter Name="foto" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="insertarProveedor">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="apellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="domicilio" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="correoElectronico" Mode="In" Type="String" />
+            <Parameter Name="empresa" Mode="In" Type="String" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="inventarioMateria">
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="idMateria" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="inventarioProducto">
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="modificarMateria">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="precio" Mode="In" Type="Decimal" />
+            <Parameter Name="idMateriaP" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="modificarProducto">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="precio" Mode="In" Type="Decimal" />
+            <Parameter Name="foto" Mode="In" Type="Binary" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="mostrarUsuario" ReturnType="Collection(BreadSoftModel.mostrarUsuario_Result)">
+            <Parameter Name="usuario" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BreadSoftModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BreadSoftModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="mostrarUsuario_Result">
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="apellidoPaterno" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="apellidoMaterno" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="rol" Nullable="false" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="detailsEmpleado_Result">
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="apellidoPaterno" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="apellidoMaterno" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="domicilio" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="telefono" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="correoElectronico" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="contrasena" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="rol" Nullable="false" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="buscarArticuloVenta_Result">
           <Property Type="Int32" Name="idProducto" Nullable="false" />
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
@@ -1170,18 +1180,48 @@
           <Property Type="Int32" Name="idProveedor" Nullable="false" />
           <Property Type="String" Name="nombre1" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="detailsEmpleado_Result">
+          <Property Type="Int32" Name="idPersona" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidoPaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidoMaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="domicilio" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="telefono" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="correoElectronico" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="idEmpleado" Nullable="false" />
+          <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="contrasena" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="rol" Nullable="false" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="inicarSesion_Result">
           <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="rol" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="mostrarUsuario_Result">
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidoPaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidoMaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="rol" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BreadSoftv2ModelStoreContainer" CdmEntityContainer="BreadSoftv2Entities">
+        <EntityContainerMapping StorageEntityContainer="BreadSoftModelStoreContainer" CdmEntityContainer="BreadSoftEntities">
           <EntitySetMapping Name="cliente">
-            <EntityTypeMapping TypeName="BreadSoftv2Model.cliente">
+            <EntityTypeMapping TypeName="BreadSoftModel.cliente">
               <MappingFragment StoreEntitySet="cliente">
                 <ScalarProperty Name="idCliente" ColumnName="idCliente" />
                 <ScalarProperty Name="usuario" ColumnName="usuario" />
@@ -1190,7 +1230,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="compra">
-            <EntityTypeMapping TypeName="BreadSoftv2Model.compra">
+            <EntityTypeMapping TypeName="BreadSoftModel.compra">
               <MappingFragment StoreEntitySet="compra">
                 <ScalarProperty Name="idCompra" ColumnName="idCompra" />
                 <ScalarProperty Name="fechaCompra" ColumnName="fechaCompra" />
@@ -1200,7 +1240,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="detalleCompra">
-            <EntityTypeMapping TypeName="BreadSoftv2Model.detalleCompra">
+            <EntityTypeMapping TypeName="BreadSoftModel.detalleCompra">
               <MappingFragment StoreEntitySet="detalleCompra">
                 <ScalarProperty Name="idDetalleCompra" ColumnName="idDetalleCompra" />
                 <ScalarProperty Name="idMateriaP" ColumnName="idMateriaP" />
@@ -1210,7 +1250,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="detalleVenta">
-            <EntityTypeMapping TypeName="BreadSoftv2Model.detalleVenta">
+            <EntityTypeMapping TypeName="BreadSoftModel.detalleVenta">
               <MappingFragment StoreEntitySet="detalleVenta">
                 <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
@@ -1220,7 +1260,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="empleado">
-            <EntityTypeMapping TypeName="BreadSoftv2Model.empleado">
+            <EntityTypeMapping TypeName="BreadSoftModel.empleado">
               <MappingFragment StoreEntitySet="empleado">
                 <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
                 <ScalarProperty Name="usuario" ColumnName="usuario" />
@@ -1231,7 +1271,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="materiaPrima">
-            <EntityTypeMapping TypeName="BreadSoftv2Model.materiaPrima">
+            <EntityTypeMapping TypeName="BreadSoftModel.materiaPrima">
               <MappingFragment StoreEntitySet="materiaPrima">
                 <ScalarProperty Name="idMateriaP" ColumnName="idMateriaP" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1243,7 +1283,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="persona">
-            <EntityTypeMapping TypeName="BreadSoftv2Model.persona">
+            <EntityTypeMapping TypeName="BreadSoftModel.persona">
               <MappingFragment StoreEntitySet="persona">
                 <ScalarProperty Name="idPersona" ColumnName="idPersona" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1256,7 +1296,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="producto">
-            <EntityTypeMapping TypeName="BreadSoftv2Model.producto">
+            <EntityTypeMapping TypeName="BreadSoftModel.producto">
               <MappingFragment StoreEntitySet="producto">
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1268,7 +1308,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="productoMateriaPrima">
-            <EntityTypeMapping TypeName="BreadSoftv2Model.productoMateriaPrima">
+            <EntityTypeMapping TypeName="BreadSoftModel.productoMateriaPrima">
               <MappingFragment StoreEntitySet="productoMateriaPrima">
                 <ScalarProperty Name="idProdMateriaP" ColumnName="idProdMateriaP" />
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
@@ -1278,7 +1318,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="proveedor">
-            <EntityTypeMapping TypeName="BreadSoftv2Model.proveedor">
+            <EntityTypeMapping TypeName="BreadSoftModel.proveedor">
               <MappingFragment StoreEntitySet="proveedor">
                 <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
                 <ScalarProperty Name="empresa" ColumnName="empresa" />
@@ -1288,7 +1328,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="BreadSoftv2Model.sysdiagrams">
+            <EntityTypeMapping TypeName="BreadSoftModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1299,7 +1339,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="venta">
-            <EntityTypeMapping TypeName="BreadSoftv2Model.venta">
+            <EntityTypeMapping TypeName="BreadSoftModel.venta">
               <MappingFragment StoreEntitySet="venta">
                 <ScalarProperty Name="idVenta" ColumnName="idVenta" />
                 <ScalarProperty Name="fechaVenta" ColumnName="fechaVenta" />
@@ -1309,52 +1349,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="insertarCliente" FunctionName="BreadSoftv2Model.Store.insertarCliente" />
-          <FunctionImportMapping FunctionImportName="insertarDetalle" FunctionName="BreadSoftv2Model.Store.insertarDetalle" />
-          <FunctionImportMapping FunctionImportName="insertarEmpleado" FunctionName="BreadSoftv2Model.Store.insertarEmpleado" />
-          <FunctionImportMapping FunctionImportName="insertarProducto" FunctionName="BreadSoftv2Model.Store.insertarProducto" />
-          <FunctionImportMapping FunctionImportName="insertarProveedor" FunctionName="BreadSoftv2Model.Store.insertarProveedor" />
-          <FunctionImportMapping FunctionImportName="inventarioMateria" FunctionName="BreadSoftv2Model.Store.inventarioMateria" />
-          <FunctionImportMapping FunctionImportName="inventarioProducto" FunctionName="BreadSoftv2Model.Store.inventarioProducto" />
-          <FunctionImportMapping FunctionImportName="modificarMateria" FunctionName="BreadSoftv2Model.Store.modificarMateria" />
-          <FunctionImportMapping FunctionImportName="modificarProducto" FunctionName="BreadSoftv2Model.Store.modificarProducto" />
-          <FunctionImportMapping FunctionImportName="mostrarUsuario" FunctionName="BreadSoftv2Model.Store.mostrarUsuario">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BreadSoftv2Model.mostrarUsuario_Result">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
-                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
-                <ScalarProperty Name="rol" ColumnName="rol" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BreadSoftv2Model.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BreadSoftv2Model.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BreadSoftv2Model.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BreadSoftv2Model.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BreadSoftv2Model.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BreadSoftv2Model.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BreadSoftv2Model.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BreadSoftv2Model.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BreadSoftv2Model.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="detailsEmpleado" FunctionName="BreadSoftv2Model.Store.detailsEmpleado">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BreadSoftv2Model.detailsEmpleado_Result">
+          <EntitySetMapping Name="v_empleadoPersona">
+            <EntityTypeMapping TypeName="BreadSoftModel.v_empleadoPersona">
+              <MappingFragment StoreEntitySet="v_empleadoPersona">
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
                 <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
@@ -1364,12 +1361,12 @@
                 <ScalarProperty Name="usuario" ColumnName="usuario" />
                 <ScalarProperty Name="contrasena" ColumnName="contrasena" />
                 <ScalarProperty Name="rol" ColumnName="rol" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="buscarArticuloVenta" FunctionName="BreadSoftv2Model.Store.buscarArticuloVenta">
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="buscarArticuloVenta" FunctionName="BreadSoftModel.Store.buscarArticuloVenta">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreadSoftv2Model.buscarArticuloVenta_Result">
+              <ComplexTypeMapping TypeName="BreadSoftModel.buscarArticuloVenta_Result">
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
@@ -1377,9 +1374,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="consultarCliente" FunctionName="BreadSoftv2Model.Store.consultarCliente">
+          <FunctionImportMapping FunctionImportName="consultarCliente" FunctionName="BreadSoftModel.Store.consultarCliente">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreadSoftv2Model.consultarCliente_Result">
+              <ComplexTypeMapping TypeName="BreadSoftModel.consultarCliente_Result">
                 <ScalarProperty Name="idPersona" ColumnName="idPersona" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
@@ -1392,9 +1389,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="consultarEmpleado" FunctionName="BreadSoftv2Model.Store.consultarEmpleado">
+          <FunctionImportMapping FunctionImportName="consultarEmpleado" FunctionName="BreadSoftModel.Store.consultarEmpleado">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreadSoftv2Model.consultarEmpleado_Result">
+              <ComplexTypeMapping TypeName="BreadSoftModel.consultarEmpleado_Result">
                 <ScalarProperty Name="idPersona" ColumnName="idPersona" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
@@ -1408,9 +1405,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="consultarProducto" FunctionName="BreadSoftv2Model.Store.consultarProducto">
+          <FunctionImportMapping FunctionImportName="consultarProducto" FunctionName="BreadSoftModel.Store.consultarProducto">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreadSoftv2Model.consultarProducto_Result">
+              <ComplexTypeMapping TypeName="BreadSoftModel.consultarProducto_Result">
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -1420,9 +1417,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="consultarProveedor" FunctionName="BreadSoftv2Model.Store.consultarProveedor">
+          <FunctionImportMapping FunctionImportName="consultarProveedor" FunctionName="BreadSoftModel.Store.consultarProveedor">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreadSoftv2Model.consultarProveedor_Result">
+              <ComplexTypeMapping TypeName="BreadSoftModel.consultarProveedor_Result">
                 <ScalarProperty Name="idPersona" ColumnName="idPersona" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
@@ -1436,24 +1433,84 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="disminuirInventario" FunctionName="BreadSoftv2Model.Store.disminuirInventario" />
-          <FunctionImportMapping FunctionImportName="editarCliente" FunctionName="BreadSoftv2Model.Store.editarCliente" />
-          <FunctionImportMapping FunctionImportName="editarEmpleado" FunctionName="BreadSoftv2Model.Store.editarEmpleado" />
-          <FunctionImportMapping FunctionImportName="editarProveedor" FunctionName="BreadSoftv2Model.Store.editarProveedor" />
-          <FunctionImportMapping FunctionImportName="eliminarCliente" FunctionName="BreadSoftv2Model.Store.eliminarCliente" />
-          <FunctionImportMapping FunctionImportName="eliminarEmpleado" FunctionName="BreadSoftv2Model.Store.eliminarEmpleado" />
-          <FunctionImportMapping FunctionImportName="eliminarMateria" FunctionName="BreadSoftv2Model.Store.eliminarMateria" />
-          <FunctionImportMapping FunctionImportName="eliminarProducto" FunctionName="BreadSoftv2Model.Store.eliminarProducto" />
-          <FunctionImportMapping FunctionImportName="eliminarProveedor" FunctionName="BreadSoftv2Model.Store.eliminarProveedor" />
-          <FunctionImportMapping FunctionImportName="eliminarVenta" FunctionName="BreadSoftv2Model.Store.eliminarVenta" />
-          <FunctionImportMapping FunctionImportName="inicarSesion" FunctionName="BreadSoftv2Model.Store.inicarSesion">
+          <FunctionImportMapping FunctionImportName="detailsEmpleado" FunctionName="BreadSoftModel.Store.detailsEmpleado">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreadSoftv2Model.inicarSesion_Result">
+              <ComplexTypeMapping TypeName="BreadSoftModel.detailsEmpleado_Result">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="disminuirInventario" FunctionName="BreadSoftModel.Store.disminuirInventario" />
+          <FunctionImportMapping FunctionImportName="editarCliente" FunctionName="BreadSoftModel.Store.editarCliente" />
+          <FunctionImportMapping FunctionImportName="editarEmpleado" FunctionName="BreadSoftModel.Store.editarEmpleado" />
+          <FunctionImportMapping FunctionImportName="editarProveedor" FunctionName="BreadSoftModel.Store.editarProveedor" />
+          <FunctionImportMapping FunctionImportName="eliminarCliente" FunctionName="BreadSoftModel.Store.eliminarCliente" />
+          <FunctionImportMapping FunctionImportName="eliminarEmpleado" FunctionName="BreadSoftModel.Store.eliminarEmpleado" />
+          <FunctionImportMapping FunctionImportName="eliminarMateria" FunctionName="BreadSoftModel.Store.eliminarMateria" />
+          <FunctionImportMapping FunctionImportName="eliminarProducto" FunctionName="BreadSoftModel.Store.eliminarProducto" />
+          <FunctionImportMapping FunctionImportName="eliminarProveedor" FunctionName="BreadSoftModel.Store.eliminarProveedor" />
+          <FunctionImportMapping FunctionImportName="eliminarVenta" FunctionName="BreadSoftModel.Store.eliminarVenta" />
+          <FunctionImportMapping FunctionImportName="inicarSesion" FunctionName="BreadSoftModel.Store.inicarSesion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreadSoftModel.inicarSesion_Result">
                 <ScalarProperty Name="usuario" ColumnName="usuario" />
                 <ScalarProperty Name="rol" ColumnName="rol" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="insertarCliente" FunctionName="BreadSoftModel.Store.insertarCliente" />
+          <FunctionImportMapping FunctionImportName="insertarDetalle" FunctionName="BreadSoftModel.Store.insertarDetalle" />
+          <FunctionImportMapping FunctionImportName="insertarEmpleado" FunctionName="BreadSoftModel.Store.insertarEmpleado" />
+          <FunctionImportMapping FunctionImportName="insertarProducto" FunctionName="BreadSoftModel.Store.insertarProducto" />
+          <FunctionImportMapping FunctionImportName="insertarProveedor" FunctionName="BreadSoftModel.Store.insertarProveedor" />
+          <FunctionImportMapping FunctionImportName="inventarioMateria" FunctionName="BreadSoftModel.Store.inventarioMateria" />
+          <FunctionImportMapping FunctionImportName="inventarioProducto" FunctionName="BreadSoftModel.Store.inventarioProducto" />
+          <FunctionImportMapping FunctionImportName="modificarMateria" FunctionName="BreadSoftModel.Store.modificarMateria" />
+          <FunctionImportMapping FunctionImportName="modificarProducto" FunctionName="BreadSoftModel.Store.modificarProducto" />
+          <FunctionImportMapping FunctionImportName="mostrarUsuario" FunctionName="BreadSoftModel.Store.mostrarUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreadSoftModel.mostrarUsuario_Result">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BreadSoftModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BreadSoftModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BreadSoftModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BreadSoftModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreadSoftModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BreadSoftModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreadSoftModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BreadSoftModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BreadSoftModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
