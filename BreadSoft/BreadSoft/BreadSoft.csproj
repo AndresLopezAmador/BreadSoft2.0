@@ -136,6 +136,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BreadSoftContext.cs" />
+    <Compile Include="Models\buscarArticuloVenta_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\cliente.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -143,6 +146,21 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Consulta.cs" />
+    <Compile Include="Models\consultarCliente_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\consultardetallesVenta_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\consultarEmpleado_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\consultarProducto_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\consultarProveedor_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\detailsEmpleado_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -156,6 +174,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EmpleadoPersona.cs" />
+    <Compile Include="Models\inicarSesion_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\materiaPrima.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

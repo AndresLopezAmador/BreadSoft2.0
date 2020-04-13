@@ -312,10 +312,80 @@ advertencia 6002: La tabla o vista 'BreadSoftv2.dbo.v_empleadoPersona' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="buscarArticuloVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="buscar" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="consultarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="consultardetallesVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="consultarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="consultarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="consultarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="detailsEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
+        <Function Name="disminuirInventario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProducto" Type="int" Mode="In" />
+          <Parameter Name="cantidad" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="editarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidoPaterno" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidoMaterno" Type="nvarchar" Mode="In" />
+          <Parameter Name="domicilio" Type="nvarchar" Mode="In" />
+          <Parameter Name="telefono" Type="nvarchar" Mode="In" />
+          <Parameter Name="correoElectronico" Type="nvarchar" Mode="In" />
+          <Parameter Name="usuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="idPersona" Type="int" Mode="In" />
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="editarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidoPaterno" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidoMaterno" Type="nvarchar" Mode="In" />
+          <Parameter Name="domicilio" Type="nvarchar" Mode="In" />
+          <Parameter Name="telefono" Type="nvarchar" Mode="In" />
+          <Parameter Name="correoElectronico" Type="nvarchar" Mode="In" />
+          <Parameter Name="usuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="contrasena" Type="nvarchar" Mode="In" />
+          <Parameter Name="rol" Type="nvarchar" Mode="In" />
+          <Parameter Name="idPersona" Type="int" Mode="In" />
+        </Function>
+        <Function Name="editarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidoPaterno" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidoMaterno" Type="nvarchar" Mode="In" />
+          <Parameter Name="domicilio" Type="nvarchar" Mode="In" />
+          <Parameter Name="telefono" Type="nvarchar" Mode="In" />
+          <Parameter Name="correoElectronico" Type="nvarchar" Mode="In" />
+          <Parameter Name="empresa" Type="nvarchar" Mode="In" />
+          <Parameter Name="idPersona" Type="int" Mode="In" />
+          <Parameter Name="idProveedor" Type="int" Mode="In" />
+        </Function>
+        <Function Name="eliminarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPersona" Type="int" Mode="In" />
+        </Function>
+        <Function Name="eliminarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPersona" Type="int" Mode="In" />
+        </Function>
+        <Function Name="eliminarMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMateriaP" Type="int" Mode="In" />
+        </Function>
+        <Function Name="eliminarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProducto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="eliminarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPersona" Type="int" Mode="In" />
+        </Function>
+        <Function Name="eliminarVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idVenta" Type="int" Mode="In" />
+        </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="inicarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usuario" Type="varchar" Mode="In" />
+          <Parameter Name="contrasena" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="insertarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="nvarchar" Mode="In" />
           <Parameter Name="apellidoPaterno" Type="nvarchar" Mode="In" />
@@ -340,6 +410,13 @@ advertencia 6002: La tabla o vista 'BreadSoftv2.dbo.v_empleadoPersona' no tiene 
           <Parameter Name="contrasena" Type="nvarchar" Mode="In" />
           <Parameter Name="rol" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="insertarMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="cantidad" Type="int" Mode="In" />
+          <Parameter Name="idProveedor" Type="int" Mode="In" />
+          <Parameter Name="precio" Type="decimal" Mode="In" />
+        </Function>
         <Function Name="insertarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="varchar" Mode="In" />
           <Parameter Name="descripcion" Type="varchar" Mode="In" />
@@ -356,6 +433,12 @@ advertencia 6002: La tabla o vista 'BreadSoftv2.dbo.v_empleadoPersona' no tiene 
           <Parameter Name="correoElectronico" Type="nvarchar" Mode="In" />
           <Parameter Name="empresa" Type="nvarchar" Mode="In" />
           <Parameter Name="idProducto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="insertarVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="total" Type="decimal" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+          <Parameter Name="idEmpleado" Type="int" Mode="In" />
+          <Parameter Name="idCliente" Type="int" Mode="In" />
         </Function>
         <Function Name="inventarioMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cantidad" Type="int" Mode="In" />
@@ -993,7 +1076,90 @@ advertencia 6002: La tabla o vista 'BreadSoftv2.dbo.v_empleadoPersona' no tiene 
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="detailsEmpleado" ReturnType="Collection(BreadSoftv2Model.detailsEmpleado_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="buscarArticuloVenta" ReturnType="Collection(BreadSoftv2Model.buscarArticuloVenta_Result)">
+            <Parameter Name="buscar" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="consultarCliente" ReturnType="Collection(BreadSoftv2Model.consultarCliente_Result)" />
+          <FunctionImport Name="consultardetallesVenta" ReturnType="Collection(BreadSoftv2Model.consultardetallesVenta_Result)">
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="consultarEmpleado" ReturnType="Collection(BreadSoftv2Model.consultarEmpleado_Result)" />
+          <FunctionImport Name="consultarProducto" ReturnType="Collection(BreadSoftv2Model.consultarProducto_Result)" />
+          <FunctionImport Name="consultarProveedor" ReturnType="Collection(BreadSoftv2Model.consultarProveedor_Result)" />
+          <FunctionImport Name="disminuirInventario">
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="editarCliente">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="apellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="domicilio" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="correoElectronico" Mode="In" Type="String" />
+            <Parameter Name="usuario" Mode="In" Type="String" />
+            <Parameter Name="idPersona" Mode="In" Type="Int32" />
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="editarEmpleado">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="apellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="domicilio" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="correoElectronico" Mode="In" Type="String" />
+            <Parameter Name="usuario" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+            <Parameter Name="rol" Mode="In" Type="String" />
+            <Parameter Name="idPersona" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="editarProveedor">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="apellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="domicilio" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="correoElectronico" Mode="In" Type="String" />
+            <Parameter Name="empresa" Mode="In" Type="String" />
+            <Parameter Name="idPersona" Mode="In" Type="Int32" />
+            <Parameter Name="idProveedor" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="eliminarCliente">
+            <Parameter Name="idPersona" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="eliminarEmpleado">
+            <Parameter Name="idPersona" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="eliminarMateria">
+            <Parameter Name="idMateriaP" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="eliminarProducto">
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="eliminarProveedor">
+            <Parameter Name="idPersona" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="eliminarVenta">
+            <Parameter Name="idVenta" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="inicarSesion" ReturnType="Collection(BreadSoftv2Model.inicarSesion_Result)">
+            <Parameter Name="usuario" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insertarMateria">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="idProveedor" Mode="In" Type="Int32" />
+            <Parameter Name="precio" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="insertarVenta">
+            <Parameter Name="total" Mode="In" Type="Decimal" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="mostrarUsuario_Result">
@@ -1022,6 +1188,68 @@ advertencia 6002: La tabla o vista 'BreadSoftv2.dbo.v_empleadoPersona' no tiene 
           <Property Type="String" Name="correoElectronico" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="contrasena" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="rol" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="buscarArticuloVenta_Result">
+          <Property Type="Int32" Name="idProducto" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="cantidad" Nullable="false" />
+          <Property Type="Decimal" Name="precio" Nullable="false" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="consultarCliente_Result">
+          <Property Type="Int32" Name="idPersona" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidoPaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidoMaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="domicilio" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="telefono" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="correoElectronico" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="consultardetallesVenta_Result">
+          <Property Type="Int32" Name="idVenta" Nullable="false" />
+          <Property Type="DateTime" Name="fechaVenta" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="total" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="precio" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="consultarEmpleado_Result">
+          <Property Type="Int32" Name="idPersona" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidoPaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidoMaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="domicilio" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="telefono" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="correoElectronico" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="contrasena" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="rol" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="consultarProducto_Result">
+          <Property Type="Int32" Name="idProducto" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="cantidad" Nullable="false" />
+          <Property Type="Decimal" Name="precio" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Binary" Name="foto" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="consultarProveedor_Result">
+          <Property Type="Int32" Name="idPersona" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidoPaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidoMaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="domicilio" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="telefono" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="correoElectronico" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="empresa" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="idProveedor" Nullable="false" />
+          <Property Type="String" Name="nombre1" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="inicarSesion_Result">
+          <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="rol" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
@@ -1232,6 +1460,108 @@ advertencia 6002: La tabla o vista 'BreadSoftv2.dbo.v_empleadoPersona' no tiene 
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="buscarArticuloVenta" FunctionName="BreadSoftv2Model.Store.buscarArticuloVenta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreadSoftv2Model.buscarArticuloVenta_Result">
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="consultarCliente" FunctionName="BreadSoftv2Model.Store.consultarCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreadSoftv2Model.consultarCliente_Result">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="consultardetallesVenta" FunctionName="BreadSoftv2Model.Store.consultardetallesVenta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreadSoftv2Model.consultardetallesVenta_Result">
+                <ScalarProperty Name="idVenta" ColumnName="idVenta" />
+                <ScalarProperty Name="fechaVenta" ColumnName="fechaVenta" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="consultarEmpleado" FunctionName="BreadSoftv2Model.Store.consultarEmpleado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreadSoftv2Model.consultarEmpleado_Result">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="consultarProducto" FunctionName="BreadSoftv2Model.Store.consultarProducto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreadSoftv2Model.consultarProducto_Result">
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="consultarProveedor" FunctionName="BreadSoftv2Model.Store.consultarProveedor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreadSoftv2Model.consultarProveedor_Result">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+                <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="disminuirInventario" FunctionName="BreadSoftv2Model.Store.disminuirInventario" />
+          <FunctionImportMapping FunctionImportName="editarCliente" FunctionName="BreadSoftv2Model.Store.editarCliente" />
+          <FunctionImportMapping FunctionImportName="editarEmpleado" FunctionName="BreadSoftv2Model.Store.editarEmpleado" />
+          <FunctionImportMapping FunctionImportName="editarProveedor" FunctionName="BreadSoftv2Model.Store.editarProveedor" />
+          <FunctionImportMapping FunctionImportName="eliminarCliente" FunctionName="BreadSoftv2Model.Store.eliminarCliente" />
+          <FunctionImportMapping FunctionImportName="eliminarEmpleado" FunctionName="BreadSoftv2Model.Store.eliminarEmpleado" />
+          <FunctionImportMapping FunctionImportName="eliminarMateria" FunctionName="BreadSoftv2Model.Store.eliminarMateria" />
+          <FunctionImportMapping FunctionImportName="eliminarProducto" FunctionName="BreadSoftv2Model.Store.eliminarProducto" />
+          <FunctionImportMapping FunctionImportName="eliminarProveedor" FunctionName="BreadSoftv2Model.Store.eliminarProveedor" />
+          <FunctionImportMapping FunctionImportName="eliminarVenta" FunctionName="BreadSoftv2Model.Store.eliminarVenta" />
+          <FunctionImportMapping FunctionImportName="inicarSesion" FunctionName="BreadSoftv2Model.Store.inicarSesion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BreadSoftv2Model.inicarSesion_Result">
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="insertarMateria" FunctionName="BreadSoftv2Model.Store.insertarMateria" />
+          <FunctionImportMapping FunctionImportName="insertarVenta" FunctionName="BreadSoftv2Model.Store.insertarVenta" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
