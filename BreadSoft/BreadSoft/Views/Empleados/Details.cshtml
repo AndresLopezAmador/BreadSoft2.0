@@ -1,0 +1,82 @@
+﻿@model BreadSoft.Models.EmpleadoPersona
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.persona.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.persona.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.persona.apellidoPaterno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.persona.apellidoMaterno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.persona.domicilio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.persona.domicilio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.persona.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.persona.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.persona.correoElectronico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.persona.correoElectronico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.empleado.usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empleado.usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.empleado.contrasena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empleado.contrasena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.empleado.rol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empleado.rol)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.empleado.idEmpleado }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

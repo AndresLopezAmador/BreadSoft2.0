@@ -12,21 +12,21 @@ namespace BreadSoft.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class proveedor
+    public partial class compra
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public proveedor()
+        public compra()
         {
-            this.materiaPrima = new HashSet<materiaPrima>();
+            this.detalleCompra = new HashSet<detalleCompra>();
         }
     
-        public int idProveedor { get; set; }
-        public string empresa { get; set; }
-        public int idPersona { get; set; }
-        public int idProducto { get; set; }
+        public int idCompra { get; set; }
+        public System.DateTime fechaCompra { get; set; }
+        public decimal total { get; set; }
+        public int idEmpleado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<materiaPrima> materiaPrima { get; set; }
-        public virtual persona persona { get; set; }
+        public virtual ICollection<detalleCompra> detalleCompra { get; set; }
+        public virtual empleado empleado { get; set; }
     }
 }

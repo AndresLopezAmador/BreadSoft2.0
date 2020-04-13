@@ -1,9 +1,11 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BreadSoft.Models;
 
 namespace BreadSoft.Controllers
 {
@@ -12,13 +14,18 @@ namespace BreadSoft.Controllers
         // GET: Empleados
         public ActionResult Index()
         {
-            return View();
+            var db = new BreadSoftv2Entities();
+            var data = db.empleado.ToList();
+            return View(data);
         }
 
         // GET: Empleados/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            EmpleadoPersona model = new EmpleadoPersona();
+            model.empleado = new Consulta().mostrarInfo(id);
+            model.persona = model.empleado.persona;
+            return View(model );
         }
 
         // GET: Empleados/Create
@@ -29,12 +36,26 @@ namespace BreadSoft.Controllers
 
         // POST: Empleados/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(empleado collection)
         {
             try
             {
                 // TODO: Add insert logic here
+                SqlParameter nombre = new SqlParameter("@nombre", collection.persona.nombre);
+                SqlParameter aPaterno = new SqlParameter("@apellidoPaterno", collection.persona.apellidoPaterno);
+                SqlParameter aMaterno = new SqlParameter("@apellidoMaterno", collection.persona.apellidoMaterno);
+                SqlParameter domicilio = new SqlParameter("@domicilio", collection.persona.domicilio);
+                SqlParameter telefono = new SqlParameter("@telefono", collection.persona.telefono);
+                SqlParameter correo = new SqlParameter("@correoElectronico", collection.persona.correoElectronico);
+                SqlParameter contrasenia = new SqlParameter("@contrasena", collection.contrasena);
+                SqlParameter rol = new SqlParameter("@rol", collection.rol);
 
+                var db = new BreadSoftv2Entities();
+                var data = db.Database.ExecuteSqlCommand("insertarEmpleado @nombre , @apellidoPaterno , " +
+                                                         "@apellidoMaterno , @domicilio , @telefono , " +
+                                                         "@correoElectronico , @contrasena , @rol", nombre,
+                                                         aPaterno, aMaterno, domicilio, telefono, correo,
+                                                         contrasenia, rol);
                 return RedirectToAction("Index");
             }
             catch
