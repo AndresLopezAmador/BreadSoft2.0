@@ -15,10 +15,10 @@ namespace BreadSoft.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class BreadSoftv2Entities : DbContext
+    public partial class BreadSoftEntities : DbContext
     {
-        public BreadSoftv2Entities()
-            : base("name=BreadSoftv2Entities")
+        public BreadSoftEntities()
+            : base("name=BreadSoftEntities")
         {
         }
     
@@ -40,6 +40,251 @@ namespace BreadSoft.Models
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<venta> venta { get; set; }
         public virtual DbSet<v_empleadoPersona> v_empleadoPersona { get; set; }
+    
+        public virtual ObjectResult<buscarArticuloVenta_Result> buscarArticuloVenta(string buscar)
+        {
+            var buscarParameter = buscar != null ?
+                new ObjectParameter("buscar", buscar) :
+                new ObjectParameter("buscar", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<buscarArticuloVenta_Result>("buscarArticuloVenta", buscarParameter);
+        }
+    
+        public virtual ObjectResult<consultarCliente_Result> consultarCliente()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<consultarCliente_Result>("consultarCliente");
+        }
+    
+        public virtual ObjectResult<consultarEmpleado_Result> consultarEmpleado()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<consultarEmpleado_Result>("consultarEmpleado");
+        }
+    
+        public virtual ObjectResult<consultarProducto_Result> consultarProducto()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<consultarProducto_Result>("consultarProducto");
+        }
+    
+        public virtual ObjectResult<consultarProveedor_Result> consultarProveedor()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<consultarProveedor_Result>("consultarProveedor");
+        }
+    
+        public virtual ObjectResult<detailsEmpleado_Result> detailsEmpleado(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<detailsEmpleado_Result>("detailsEmpleado", idParameter);
+        }
+    
+        public virtual int disminuirInventario(Nullable<int> idProducto, Nullable<decimal> cantidad)
+        {
+            var idProductoParameter = idProducto.HasValue ?
+                new ObjectParameter("idProducto", idProducto) :
+                new ObjectParameter("idProducto", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("cantidad", cantidad) :
+                new ObjectParameter("cantidad", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("disminuirInventario", idProductoParameter, cantidadParameter);
+        }
+    
+        public virtual int editarCliente(string nombre, string apellidoPaterno, string apellidoMaterno, string domicilio, string telefono, string correoElectronico, string usuario, Nullable<int> idPersona, Nullable<int> idCliente)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var apellidoPaternoParameter = apellidoPaterno != null ?
+                new ObjectParameter("apellidoPaterno", apellidoPaterno) :
+                new ObjectParameter("apellidoPaterno", typeof(string));
+    
+            var apellidoMaternoParameter = apellidoMaterno != null ?
+                new ObjectParameter("apellidoMaterno", apellidoMaterno) :
+                new ObjectParameter("apellidoMaterno", typeof(string));
+    
+            var domicilioParameter = domicilio != null ?
+                new ObjectParameter("domicilio", domicilio) :
+                new ObjectParameter("domicilio", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("telefono", telefono) :
+                new ObjectParameter("telefono", typeof(string));
+    
+            var correoElectronicoParameter = correoElectronico != null ?
+                new ObjectParameter("correoElectronico", correoElectronico) :
+                new ObjectParameter("correoElectronico", typeof(string));
+    
+            var usuarioParameter = usuario != null ?
+                new ObjectParameter("usuario", usuario) :
+                new ObjectParameter("usuario", typeof(string));
+    
+            var idPersonaParameter = idPersona.HasValue ?
+                new ObjectParameter("idPersona", idPersona) :
+                new ObjectParameter("idPersona", typeof(int));
+    
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("idCliente", idCliente) :
+                new ObjectParameter("idCliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("editarCliente", nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, domicilioParameter, telefonoParameter, correoElectronicoParameter, usuarioParameter, idPersonaParameter, idClienteParameter);
+        }
+    
+        public virtual int editarEmpleado(string nombre, string apellidoPaterno, string apellidoMaterno, string domicilio, string telefono, string correoElectronico, string usuario, string contrasena, string rol, Nullable<int> idPersona)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var apellidoPaternoParameter = apellidoPaterno != null ?
+                new ObjectParameter("apellidoPaterno", apellidoPaterno) :
+                new ObjectParameter("apellidoPaterno", typeof(string));
+    
+            var apellidoMaternoParameter = apellidoMaterno != null ?
+                new ObjectParameter("apellidoMaterno", apellidoMaterno) :
+                new ObjectParameter("apellidoMaterno", typeof(string));
+    
+            var domicilioParameter = domicilio != null ?
+                new ObjectParameter("domicilio", domicilio) :
+                new ObjectParameter("domicilio", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("telefono", telefono) :
+                new ObjectParameter("telefono", typeof(string));
+    
+            var correoElectronicoParameter = correoElectronico != null ?
+                new ObjectParameter("correoElectronico", correoElectronico) :
+                new ObjectParameter("correoElectronico", typeof(string));
+    
+            var usuarioParameter = usuario != null ?
+                new ObjectParameter("usuario", usuario) :
+                new ObjectParameter("usuario", typeof(string));
+    
+            var contrasenaParameter = contrasena != null ?
+                new ObjectParameter("contrasena", contrasena) :
+                new ObjectParameter("contrasena", typeof(string));
+    
+            var rolParameter = rol != null ?
+                new ObjectParameter("rol", rol) :
+                new ObjectParameter("rol", typeof(string));
+    
+            var idPersonaParameter = idPersona.HasValue ?
+                new ObjectParameter("idPersona", idPersona) :
+                new ObjectParameter("idPersona", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("editarEmpleado", nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, domicilioParameter, telefonoParameter, correoElectronicoParameter, usuarioParameter, contrasenaParameter, rolParameter, idPersonaParameter);
+        }
+    
+        public virtual int editarProveedor(string nombre, string apellidoPaterno, string apellidoMaterno, string domicilio, string telefono, string correoElectronico, string empresa, Nullable<int> idPersona, Nullable<int> idProveedor)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var apellidoPaternoParameter = apellidoPaterno != null ?
+                new ObjectParameter("apellidoPaterno", apellidoPaterno) :
+                new ObjectParameter("apellidoPaterno", typeof(string));
+    
+            var apellidoMaternoParameter = apellidoMaterno != null ?
+                new ObjectParameter("apellidoMaterno", apellidoMaterno) :
+                new ObjectParameter("apellidoMaterno", typeof(string));
+    
+            var domicilioParameter = domicilio != null ?
+                new ObjectParameter("domicilio", domicilio) :
+                new ObjectParameter("domicilio", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("telefono", telefono) :
+                new ObjectParameter("telefono", typeof(string));
+    
+            var correoElectronicoParameter = correoElectronico != null ?
+                new ObjectParameter("correoElectronico", correoElectronico) :
+                new ObjectParameter("correoElectronico", typeof(string));
+    
+            var empresaParameter = empresa != null ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(string));
+    
+            var idPersonaParameter = idPersona.HasValue ?
+                new ObjectParameter("idPersona", idPersona) :
+                new ObjectParameter("idPersona", typeof(int));
+    
+            var idProveedorParameter = idProveedor.HasValue ?
+                new ObjectParameter("idProveedor", idProveedor) :
+                new ObjectParameter("idProveedor", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("editarProveedor", nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, domicilioParameter, telefonoParameter, correoElectronicoParameter, empresaParameter, idPersonaParameter, idProveedorParameter);
+        }
+    
+        public virtual int eliminarCliente(Nullable<int> idPersona)
+        {
+            var idPersonaParameter = idPersona.HasValue ?
+                new ObjectParameter("idPersona", idPersona) :
+                new ObjectParameter("idPersona", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("eliminarCliente", idPersonaParameter);
+        }
+    
+        public virtual int eliminarEmpleado(Nullable<int> idPersona)
+        {
+            var idPersonaParameter = idPersona.HasValue ?
+                new ObjectParameter("idPersona", idPersona) :
+                new ObjectParameter("idPersona", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("eliminarEmpleado", idPersonaParameter);
+        }
+    
+        public virtual int eliminarMateria(Nullable<int> idMateriaP)
+        {
+            var idMateriaPParameter = idMateriaP.HasValue ?
+                new ObjectParameter("idMateriaP", idMateriaP) :
+                new ObjectParameter("idMateriaP", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("eliminarMateria", idMateriaPParameter);
+        }
+    
+        public virtual int eliminarProducto(Nullable<int> idProducto)
+        {
+            var idProductoParameter = idProducto.HasValue ?
+                new ObjectParameter("idProducto", idProducto) :
+                new ObjectParameter("idProducto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("eliminarProducto", idProductoParameter);
+        }
+    
+        public virtual int eliminarProveedor(Nullable<int> idPersona)
+        {
+            var idPersonaParameter = idPersona.HasValue ?
+                new ObjectParameter("idPersona", idPersona) :
+                new ObjectParameter("idPersona", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("eliminarProveedor", idPersonaParameter);
+        }
+    
+        public virtual int eliminarVenta(Nullable<int> idVenta)
+        {
+            var idVentaParameter = idVenta.HasValue ?
+                new ObjectParameter("idVenta", idVenta) :
+                new ObjectParameter("idVenta", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("eliminarVenta", idVentaParameter);
+        }
+    
+        public virtual ObjectResult<inicarSesion_Result> inicarSesion(string usuario, string contrasena)
+        {
+            var usuarioParameter = usuario != null ?
+                new ObjectParameter("usuario", usuario) :
+                new ObjectParameter("usuario", typeof(string));
+    
+            var contrasenaParameter = contrasena != null ?
+                new ObjectParameter("contrasena", contrasena) :
+                new ObjectParameter("contrasena", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<inicarSesion_Result>("inicarSesion", usuarioParameter, contrasenaParameter);
+        }
     
         public virtual int insertarCliente(string nombre, string apellidoPaterno, string apellidoMaterno, string domicilio, string telefono, string correoElectronico, string usuario)
         {
@@ -91,7 +336,7 @@ namespace BreadSoft.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertarDetalle", idProductoParameter, idVentaParameter, cantidadParameter);
         }
     
-        public virtual ObjectResult<empleado> insertarEmpleado(string nombre, string apellidoPaterno, string apellidoMaterno, string domicilio, string telefono, string correoElectronico, string contrasena, string rol)
+        public virtual int insertarEmpleado(string nombre, string apellidoPaterno, string apellidoMaterno, string domicilio, string telefono, string correoElectronico, string contrasena, string rol)
         {
             var nombreParameter = nombre != null ?
                 new ObjectParameter("nombre", nombre) :
@@ -125,44 +370,7 @@ namespace BreadSoft.Models
                 new ObjectParameter("rol", rol) :
                 new ObjectParameter("rol", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<empleado>("insertarEmpleado", nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, domicilioParameter, telefonoParameter, correoElectronicoParameter, contrasenaParameter, rolParameter);
-        }
-    
-        public virtual ObjectResult<empleado> insertarEmpleado(string nombre, string apellidoPaterno, string apellidoMaterno, string domicilio, string telefono, string correoElectronico, string contrasena, string rol, MergeOption mergeOption)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("nombre", nombre) :
-                new ObjectParameter("nombre", typeof(string));
-    
-            var apellidoPaternoParameter = apellidoPaterno != null ?
-                new ObjectParameter("apellidoPaterno", apellidoPaterno) :
-                new ObjectParameter("apellidoPaterno", typeof(string));
-    
-            var apellidoMaternoParameter = apellidoMaterno != null ?
-                new ObjectParameter("apellidoMaterno", apellidoMaterno) :
-                new ObjectParameter("apellidoMaterno", typeof(string));
-    
-            var domicilioParameter = domicilio != null ?
-                new ObjectParameter("domicilio", domicilio) :
-                new ObjectParameter("domicilio", typeof(string));
-    
-            var telefonoParameter = telefono != null ?
-                new ObjectParameter("telefono", telefono) :
-                new ObjectParameter("telefono", typeof(string));
-    
-            var correoElectronicoParameter = correoElectronico != null ?
-                new ObjectParameter("correoElectronico", correoElectronico) :
-                new ObjectParameter("correoElectronico", typeof(string));
-    
-            var contrasenaParameter = contrasena != null ?
-                new ObjectParameter("contrasena", contrasena) :
-                new ObjectParameter("contrasena", typeof(string));
-    
-            var rolParameter = rol != null ?
-                new ObjectParameter("rol", rol) :
-                new ObjectParameter("rol", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<empleado>("insertarEmpleado", mergeOption, nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, domicilioParameter, telefonoParameter, correoElectronicoParameter, contrasenaParameter, rolParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertarEmpleado", nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, domicilioParameter, telefonoParameter, correoElectronicoParameter, contrasenaParameter, rolParameter);
         }
     
         public virtual int insertarProducto(string nombre, string descripcion, Nullable<int> cantidad, Nullable<decimal> precio, byte[] foto)
@@ -421,251 +629,6 @@ namespace BreadSoft.Models
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual ObjectResult<detailsEmpleado_Result> detailsEmpleado(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<detailsEmpleado_Result>("detailsEmpleado", idParameter);
-        }
-    
-        public virtual ObjectResult<buscarArticuloVenta_Result> buscarArticuloVenta(string buscar)
-        {
-            var buscarParameter = buscar != null ?
-                new ObjectParameter("buscar", buscar) :
-                new ObjectParameter("buscar", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<buscarArticuloVenta_Result>("buscarArticuloVenta", buscarParameter);
-        }
-    
-        public virtual ObjectResult<consultarCliente_Result> consultarCliente()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<consultarCliente_Result>("consultarCliente");
-        }
-    
-        public virtual ObjectResult<consultarEmpleado_Result> consultarEmpleado()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<consultarEmpleado_Result>("consultarEmpleado");
-        }
-    
-        public virtual ObjectResult<consultarProducto_Result> consultarProducto()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<consultarProducto_Result>("consultarProducto");
-        }
-    
-        public virtual ObjectResult<consultarProveedor_Result> consultarProveedor()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<consultarProveedor_Result>("consultarProveedor");
-        }
-    
-        public virtual int disminuirInventario(Nullable<int> idProducto, Nullable<decimal> cantidad)
-        {
-            var idProductoParameter = idProducto.HasValue ?
-                new ObjectParameter("idProducto", idProducto) :
-                new ObjectParameter("idProducto", typeof(int));
-    
-            var cantidadParameter = cantidad.HasValue ?
-                new ObjectParameter("cantidad", cantidad) :
-                new ObjectParameter("cantidad", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("disminuirInventario", idProductoParameter, cantidadParameter);
-        }
-    
-        public virtual int editarCliente(string nombre, string apellidoPaterno, string apellidoMaterno, string domicilio, string telefono, string correoElectronico, string usuario, Nullable<int> idPersona, Nullable<int> idCliente)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("nombre", nombre) :
-                new ObjectParameter("nombre", typeof(string));
-    
-            var apellidoPaternoParameter = apellidoPaterno != null ?
-                new ObjectParameter("apellidoPaterno", apellidoPaterno) :
-                new ObjectParameter("apellidoPaterno", typeof(string));
-    
-            var apellidoMaternoParameter = apellidoMaterno != null ?
-                new ObjectParameter("apellidoMaterno", apellidoMaterno) :
-                new ObjectParameter("apellidoMaterno", typeof(string));
-    
-            var domicilioParameter = domicilio != null ?
-                new ObjectParameter("domicilio", domicilio) :
-                new ObjectParameter("domicilio", typeof(string));
-    
-            var telefonoParameter = telefono != null ?
-                new ObjectParameter("telefono", telefono) :
-                new ObjectParameter("telefono", typeof(string));
-    
-            var correoElectronicoParameter = correoElectronico != null ?
-                new ObjectParameter("correoElectronico", correoElectronico) :
-                new ObjectParameter("correoElectronico", typeof(string));
-    
-            var usuarioParameter = usuario != null ?
-                new ObjectParameter("usuario", usuario) :
-                new ObjectParameter("usuario", typeof(string));
-    
-            var idPersonaParameter = idPersona.HasValue ?
-                new ObjectParameter("idPersona", idPersona) :
-                new ObjectParameter("idPersona", typeof(int));
-    
-            var idClienteParameter = idCliente.HasValue ?
-                new ObjectParameter("idCliente", idCliente) :
-                new ObjectParameter("idCliente", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("editarCliente", nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, domicilioParameter, telefonoParameter, correoElectronicoParameter, usuarioParameter, idPersonaParameter, idClienteParameter);
-        }
-    
-        public virtual int editarEmpleado(string nombre, string apellidoPaterno, string apellidoMaterno, string domicilio, string telefono, string correoElectronico, string usuario, string contrasena, string rol, Nullable<int> idPersona)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("nombre", nombre) :
-                new ObjectParameter("nombre", typeof(string));
-    
-            var apellidoPaternoParameter = apellidoPaterno != null ?
-                new ObjectParameter("apellidoPaterno", apellidoPaterno) :
-                new ObjectParameter("apellidoPaterno", typeof(string));
-    
-            var apellidoMaternoParameter = apellidoMaterno != null ?
-                new ObjectParameter("apellidoMaterno", apellidoMaterno) :
-                new ObjectParameter("apellidoMaterno", typeof(string));
-    
-            var domicilioParameter = domicilio != null ?
-                new ObjectParameter("domicilio", domicilio) :
-                new ObjectParameter("domicilio", typeof(string));
-    
-            var telefonoParameter = telefono != null ?
-                new ObjectParameter("telefono", telefono) :
-                new ObjectParameter("telefono", typeof(string));
-    
-            var correoElectronicoParameter = correoElectronico != null ?
-                new ObjectParameter("correoElectronico", correoElectronico) :
-                new ObjectParameter("correoElectronico", typeof(string));
-    
-            var usuarioParameter = usuario != null ?
-                new ObjectParameter("usuario", usuario) :
-                new ObjectParameter("usuario", typeof(string));
-    
-            var contrasenaParameter = contrasena != null ?
-                new ObjectParameter("contrasena", contrasena) :
-                new ObjectParameter("contrasena", typeof(string));
-    
-            var rolParameter = rol != null ?
-                new ObjectParameter("rol", rol) :
-                new ObjectParameter("rol", typeof(string));
-    
-            var idPersonaParameter = idPersona.HasValue ?
-                new ObjectParameter("idPersona", idPersona) :
-                new ObjectParameter("idPersona", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("editarEmpleado", nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, domicilioParameter, telefonoParameter, correoElectronicoParameter, usuarioParameter, contrasenaParameter, rolParameter, idPersonaParameter);
-        }
-    
-        public virtual int editarProveedor(string nombre, string apellidoPaterno, string apellidoMaterno, string domicilio, string telefono, string correoElectronico, string empresa, Nullable<int> idPersona, Nullable<int> idProveedor)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("nombre", nombre) :
-                new ObjectParameter("nombre", typeof(string));
-    
-            var apellidoPaternoParameter = apellidoPaterno != null ?
-                new ObjectParameter("apellidoPaterno", apellidoPaterno) :
-                new ObjectParameter("apellidoPaterno", typeof(string));
-    
-            var apellidoMaternoParameter = apellidoMaterno != null ?
-                new ObjectParameter("apellidoMaterno", apellidoMaterno) :
-                new ObjectParameter("apellidoMaterno", typeof(string));
-    
-            var domicilioParameter = domicilio != null ?
-                new ObjectParameter("domicilio", domicilio) :
-                new ObjectParameter("domicilio", typeof(string));
-    
-            var telefonoParameter = telefono != null ?
-                new ObjectParameter("telefono", telefono) :
-                new ObjectParameter("telefono", typeof(string));
-    
-            var correoElectronicoParameter = correoElectronico != null ?
-                new ObjectParameter("correoElectronico", correoElectronico) :
-                new ObjectParameter("correoElectronico", typeof(string));
-    
-            var empresaParameter = empresa != null ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(string));
-    
-            var idPersonaParameter = idPersona.HasValue ?
-                new ObjectParameter("idPersona", idPersona) :
-                new ObjectParameter("idPersona", typeof(int));
-    
-            var idProveedorParameter = idProveedor.HasValue ?
-                new ObjectParameter("idProveedor", idProveedor) :
-                new ObjectParameter("idProveedor", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("editarProveedor", nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, domicilioParameter, telefonoParameter, correoElectronicoParameter, empresaParameter, idPersonaParameter, idProveedorParameter);
-        }
-    
-        public virtual int eliminarCliente(Nullable<int> idPersona)
-        {
-            var idPersonaParameter = idPersona.HasValue ?
-                new ObjectParameter("idPersona", idPersona) :
-                new ObjectParameter("idPersona", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("eliminarCliente", idPersonaParameter);
-        }
-    
-        public virtual int eliminarEmpleado(Nullable<int> idPersona)
-        {
-            var idPersonaParameter = idPersona.HasValue ?
-                new ObjectParameter("idPersona", idPersona) :
-                new ObjectParameter("idPersona", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("eliminarEmpleado", idPersonaParameter);
-        }
-    
-        public virtual int eliminarMateria(Nullable<int> idMateriaP)
-        {
-            var idMateriaPParameter = idMateriaP.HasValue ?
-                new ObjectParameter("idMateriaP", idMateriaP) :
-                new ObjectParameter("idMateriaP", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("eliminarMateria", idMateriaPParameter);
-        }
-    
-        public virtual int eliminarProducto(Nullable<int> idProducto)
-        {
-            var idProductoParameter = idProducto.HasValue ?
-                new ObjectParameter("idProducto", idProducto) :
-                new ObjectParameter("idProducto", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("eliminarProducto", idProductoParameter);
-        }
-    
-        public virtual int eliminarProveedor(Nullable<int> idPersona)
-        {
-            var idPersonaParameter = idPersona.HasValue ?
-                new ObjectParameter("idPersona", idPersona) :
-                new ObjectParameter("idPersona", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("eliminarProveedor", idPersonaParameter);
-        }
-    
-        public virtual int eliminarVenta(Nullable<int> idVenta)
-        {
-            var idVentaParameter = idVenta.HasValue ?
-                new ObjectParameter("idVenta", idVenta) :
-                new ObjectParameter("idVenta", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("eliminarVenta", idVentaParameter);
-        }
-    
-        public virtual ObjectResult<inicarSesion_Result> inicarSesion(string usuario, string contrasena)
-        {
-            var usuarioParameter = usuario != null ?
-                new ObjectParameter("usuario", usuario) :
-                new ObjectParameter("usuario", typeof(string));
-    
-            var contrasenaParameter = contrasena != null ?
-                new ObjectParameter("contrasena", contrasena) :
-                new ObjectParameter("contrasena", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<inicarSesion_Result>("inicarSesion", usuarioParameter, contrasenaParameter);
         }
     }
 }
