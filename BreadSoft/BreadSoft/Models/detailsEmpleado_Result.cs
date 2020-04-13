@@ -13,12 +13,14 @@ namespace BreadSoft.Models
     
     public partial class detailsEmpleado_Result
     {
+        public int idPersona { get; set; }
         public string nombre { get; set; }
         public string apellidoPaterno { get; set; }
         public string apellidoMaterno { get; set; }
         public string domicilio { get; set; }
         public string telefono { get; set; }
         public string correoElectronico { get; set; }
+        public int idEmpleado { get; set; }
         public string usuario { get; set; }
         public string contrasena { get; set; }
         public string rol { get; set; }

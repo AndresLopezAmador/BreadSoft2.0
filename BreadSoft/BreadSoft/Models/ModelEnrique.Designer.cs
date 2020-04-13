@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\Sergio Torres\source\repos\666Nightmare666\BreadSoft2.0\BreadSoft\BreadSoft\Models\Model1.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\quiqu\Source\Repos\666Nightmare666\BreadSoft2.0\BreadSoft\BreadSoft\Models\ModelEnrique.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.
