@@ -11,7 +11,7 @@ namespace BreadSoft.Models
 {
     using System;
     
-    public partial class detailsEmpleado_Result
+    public partial class consultarProveedor_Result
     {
         public int idPersona { get; set; }
         public string nombre { get; set; }
@@ -20,9 +20,8 @@ namespace BreadSoft.Models
         public string domicilio { get; set; }
         public string telefono { get; set; }
         public string correoElectronico { get; set; }
-        public int idEmpleado { get; set; }
-        public string usuario { get; set; }
-        public string contrasena { get; set; }
-        public string rol { get; set; }
+        public string empresa { get; set; }
+        public int idProveedor { get; set; }
+        public string nombre1 { get; set; }
     }
 }
