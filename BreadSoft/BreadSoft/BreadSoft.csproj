@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig2.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\RouteConfig2.cs" />
+    <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Models\compra.cs">
       <DependentUpon>Model5.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Compras.cs" />
     <Compile Include="Models\Consulta.cs" />
     <Compile Include="Models\consultarCliente_Result.cs">
       <DependentUpon>Model5.tt</DependentUpon>
@@ -490,6 +492,11 @@
     <Content Include="Views\Empleados\Index.cshtml" />
     <Content Include="Views\Empleados\Create.cshtml" />
     <Content Include="Views\Empleados\Details.cshtml" />
+    <Content Include="Views\Compras\Index.cshtml" />
+    <Content Include="Views\Compras\Details.cshtml" />
+    <Content Include="Views\Compras\Create.cshtml" />
+    <Content Include="Views\Compras\Edit.cshtml" />
+    <Content Include="Views\Compras\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,42 @@
+﻿@model BreadSoft.Models.compra
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>compra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaCompra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.empleado.usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empleado.usuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idCompra }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

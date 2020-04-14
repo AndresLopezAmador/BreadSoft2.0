@@ -29,5 +29,22 @@ namespace BreadSoft.Models
                 return null;
             }
         }
+
+        //Detalles compra
+        public compra mostrarICompra(int id)
+        {
+            try
+            {
+                var info = from e in contexto.compra
+                           where e.idCompra == id
+                           select e;
+
+                return info.FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
     }
 }

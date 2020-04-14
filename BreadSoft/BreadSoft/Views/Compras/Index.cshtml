@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BreadSoft.Models.compra>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Compras realizadas</h2>
+
+<p>
+    @Html.ActionLink("Agregar nueva", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaCompra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empleado.usuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaCompra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empleado.usuario)
+        </td>
+        <td>
+            @Html.ActionLink("Modificar", "Edit", new { id=item.idCompra }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.idCompra }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.idCompra })
+        </td>
+    </tr>
+}
+
+</table>
