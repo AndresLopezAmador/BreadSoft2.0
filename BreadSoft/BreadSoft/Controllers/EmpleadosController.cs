@@ -13,9 +13,9 @@ namespace BreadSoft.Controllers
         // GET: Empleados
         public ActionResult Index()
         {
-            var db = new BreadSoftv2Entities2();
-            var data = db.empleado.ToList();
-            return View(data);
+            //var db = new BreadSoftv2Entities2();
+            //var data = db.empleado.ToList();
+            return View();
         }
 
         // GET: Empleados/Details/5

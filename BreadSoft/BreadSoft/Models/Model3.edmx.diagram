@@ -4,33 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="71ba4073a6e1484daa56d008da323ee1" Name="Diagram1">
-        <EntityTypeShape EntityType="BreadSoftModel.cliente" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BreadSoftModel.compra" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BreadSoftModel.detalleCompra" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BreadSoftModel.detalleVenta" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BreadSoftModel.empleado" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BreadSoftModel.materiaPrima" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BreadSoftModel.persona" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BreadSoftModel.producto" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="BreadSoftModel.productoMateriaPrima" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BreadSoftModel.proveedor" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BreadSoftModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BreadSoftModel.venta" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="BreadSoftModel.v_empleadoPersona" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="BreadSoftModel.fk_cliente_persona" ManuallyRouted="false" />
-        <AssociationConnector Association="BreadSoftModel.fk_venta_cliente" ManuallyRouted="false" />
-        <AssociationConnector Association="BreadSoftModel.fk_detalleC_compra" ManuallyRouted="false" />
-        <AssociationConnector Association="BreadSoftModel.fk_empleado_Compras" ManuallyRouted="false" />
-        <AssociationConnector Association="BreadSoftModel.fk_detalleC_materiaP" ManuallyRouted="false" />
-        <AssociationConnector Association="BreadSoftModel.fk_detalle_producto" ManuallyRouted="false" />
-        <AssociationConnector Association="BreadSoftModel.fk_detalle_venta" ManuallyRouted="false" />
-        <AssociationConnector Association="BreadSoftModel.fk_empleado_persona" ManuallyRouted="false" />
-        <AssociationConnector Association="BreadSoftModel.fk_venta_empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="BreadSoftModel.fk_prodMateria_materia" ManuallyRouted="false" />
-        <AssociationConnector Association="BreadSoftModel.fk_proveedor_matriaPrima" ManuallyRouted="false" />
-        <AssociationConnector Association="BreadSoftModel.fk_proveedor_persona" ManuallyRouted="false" />
-        <AssociationConnector Association="BreadSoftModel.fk_prodMateria_producto" ManuallyRouted="false" />
+      <Diagram DiagramId="27ab723c7f8b4676ad9d5307a05bdf3b" Name="Diagram1">
+        <EntityTypeShape EntityType="BreadSoftv2Model.cliente" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreadSoftv2Model.compra" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreadSoftv2Model.detalleCompra" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreadSoftv2Model.detalleVenta" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreadSoftv2Model.empleado" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreadSoftv2Model.materiaPrima" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreadSoftv2Model.persona" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreadSoftv2Model.producto" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreadSoftv2Model.productoMateriaPrima" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreadSoftv2Model.proveedor" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BreadSoftv2Model.venta" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_cliente_persona" ManuallyRouted="false" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_venta_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_detalleC_compra" ManuallyRouted="false" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_empleado_Compras" ManuallyRouted="false" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_detalleC_materiaP" ManuallyRouted="false" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_detalle_producto" ManuallyRouted="false" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_detalle_venta" ManuallyRouted="false" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_empleado_persona" ManuallyRouted="false" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_venta_empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_prodMateria_materia" ManuallyRouted="false" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_proveedor_matriaPrima" ManuallyRouted="false" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_proveedor_persona" ManuallyRouted="false" />
+        <AssociationConnector Association="BreadSoftv2Model.fk_prodMateria_producto" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

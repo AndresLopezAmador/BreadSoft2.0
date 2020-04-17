@@ -13,9 +13,9 @@ namespace BreadSoft.Controllers
         // GET: Compras
         public ActionResult Index()
         {
-            var db = new BreadSoftv2Entities2();
-            var data = db.compra.ToList();
-            return View(data);
+            //var db = new BreadSoftv2Entities2();
+            //var data = db.compra.ToList();
+            return View();
         }
 
         // GET: Compras/Detalles
@@ -24,8 +24,8 @@ namespace BreadSoft.Controllers
         {
             SqlParameter idCompra = new SqlParameter("@idCompra", collection.idCompra);
 
-            var db = new BreadSoftv2Entities2();
-            var data = db.Database.ExecuteSqlCommand("SELECT FROM compra WHERE idCompra=@idCompra");
+            //var db = new BreadSoftv2Entities2();
+            //var data = db.Database.ExecuteSqlCommand("SELECT FROM compra WHERE idCompra=@idCompra");
 
             return RedirectToAction("Index");
 
@@ -51,8 +51,8 @@ namespace BreadSoft.Controllers
                 SqlParameter total = new SqlParameter("@total", collection.total);
                 SqlParameter idEmpleado = new SqlParameter("@idEmpleado", collection.idEmpleado);                
 
-                var db = new BreadSoftv2Entities2();
-                var data = db.Database.ExecuteSqlCommand("INSERT INTO compra (fechaCompra,total,idEmpleado) VALUES (@fechaCompra,@total,@idEmpleado)");
+                //var db = new BreadSoftv2Entities2();
+                //var data = db.Database.ExecuteSqlCommand("INSERT INTO compra (fechaCompra,total,idEmpleado) VALUES (@fechaCompra,@total,@idEmpleado)");
 
                 /*var data = db.Database.ExecuteSqlCommand("insertarCompra @fechaCompra , @total , " +
                                                         "@idEmpleado", fechaCompra, total, idEmpleado);*/
@@ -82,9 +82,9 @@ namespace BreadSoft.Controllers
                 SqlParameter total = new SqlParameter("@total", collection.total);
                 SqlParameter idEmpleado = new SqlParameter("@idEmpleado", collection.idEmpleado);
 
-                var db = new BreadSoftv2Entities2();
-                var data = db.Database.ExecuteSqlCommand("UPDATE compra SET fechaCompra=@fechaCompra,total=@total,idEmpleado=@idEmpleado WHERE idCompra=@idCompra");
-                
+                //var db = new BreadSoftv2Entities2();
+                //var data = db.Database.ExecuteSqlCommand("UPDATE compra SET fechaCompra=@fechaCompra,total=@total,idEmpleado=@idEmpleado WHERE idCompra=@idCompra");
+
                 return RedirectToAction("Index");
             }
             catch
@@ -107,8 +107,8 @@ namespace BreadSoft.Controllers
             {
                 SqlParameter idCompra = new SqlParameter("@idCompra", collection.idCompra);
 
-                var db = new BreadSoftv2Entities2();
-                var data = db.Database.ExecuteSqlCommand("DELETE compra WHERE idCompra=@idCompra");
+                //var db = new BreadSoftv2Entities2();
+                //var data = db.Database.ExecuteSqlCommand("DELETE compra WHERE idCompra=@idCompra");
 
                 return RedirectToAction("Index");
             }

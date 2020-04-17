@@ -5,8 +5,9 @@ using System.Web;
 
 namespace BreadSoft.Models
 {
-    public class Productos
+    public class Producto
     {
-        public int IdP { get; set; }
+        public producto producto { get; set; }
+        public byte[] Foto { get; internal set; }
     }
 }

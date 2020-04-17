@@ -1,0 +1,41 @@
+﻿@model BreadSoft.Models.Producto
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.producto.idProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.producto.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.producto.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.producto.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.producto.precio)
+        </dt>
+
+        <dd>
+            <img src="@Url.Action("GetImage", "Producto", new {id = Model.producto.idProducto})" alt="imagen" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.producto.idProducto }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

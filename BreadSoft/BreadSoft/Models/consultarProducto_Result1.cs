@@ -11,14 +11,13 @@ namespace BreadSoft.Models
 {
     using System;
     
-    public partial class consultardetallesVenta_Result
+    public partial class consultarProducto_Result1
     {
-        public int idVenta { get; set; }
-        public System.DateTime fechaVenta { get; set; }
+        public int idProducto { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
-        public Nullable<decimal> total { get; set; }
+        public int cantidad { get; set; }
         public decimal precio { get; set; }
-        public Nullable<int> cantidad { get; set; }
+        public byte[] foto { get; set; }
     }
 }
